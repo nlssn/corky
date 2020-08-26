@@ -41,7 +41,21 @@ app.get('/api/post/:id', function(req,res) {
 });
 
 app.post('/api/post', function(req,res) {
-   // Add a new post.. or res w the error
+   var p = req.body;
+   var post = new Posts();
+
+   post.username = p.username;
+   post.subject = p.subject;
+   post.message = p.message;
+   post.imageURL = p.imageURL;
+
+   post.save(function(err) {
+      if(err) {
+         console.log(err);
+      }
+   });
+
+   res.redirect('/');
 });
 
 app.put('/api/post/:id', function(req,res) {
