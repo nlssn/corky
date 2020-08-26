@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 var postsSchema = new Schema({
    username: {
       type: String,
-      required: [true, "A username is required"]
+      required: [true, "A username is required"],
+      default: 'Anonymous'
    },
    subject: {
       type: String,
