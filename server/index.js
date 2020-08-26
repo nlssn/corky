@@ -51,11 +51,12 @@ app.post('/api/post', function(req,res) {
 
    post.save(function(err) {
       if(err) {
-         console.log(err);
+         res.json({message: err.message});
+         console.log(err.message);
+      } else {
+         res.redirect('/');
       }
    });
-
-   res.redirect('/');
 });
 
 app.put('/api/post/:id', function(req,res) {
