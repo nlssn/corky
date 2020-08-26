@@ -6,7 +6,16 @@ var express = require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var mongoose = require('mongoose');
 
+// Connect to MongoDB
+var DATABASE = process.env.MONGODB_URI || 'mongodb://localhost:27017/corky';
+mongoose.connect(DATABASE, {useNewUrlParser: true, useUnifiedTopology: true});
+
+// Import DB schema(s)
+var Posts = require('./app/models/posts.js');
+
+// Create new instance of Express
 var app = express();
 
 // Set up middleware
