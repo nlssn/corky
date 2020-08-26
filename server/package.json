@@ -1,0 +1,30 @@
+{
+  "name": "corky-server",
+  "version": "1.0.0",
+  "description": "a simple message board",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nlssn/corky.git"
+  },
+  "author": "Johannes Nilsson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nlssn/corky/issues"
+  },
+  "homepage": "https://github.com/nlssn/corky#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
