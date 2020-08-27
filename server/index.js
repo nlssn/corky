@@ -93,7 +93,16 @@ app.put('/api/post/:id', function(req,res) {
 });
 
 app.delete('/api/post/:id', function(req,res) {
-   // Remove the specified post.. or res w the error
+   var delId = req.params.id;
+   
+   Posts.deleteOne({_id: delId}, function(err, Posts) {
+      if(err) {
+         res.json({message: err.message});
+         return;
+      }
+
+      res.json({ message: "Deleted post with ID: " + deleteId });
+   });
 });
 
 // Start listening
