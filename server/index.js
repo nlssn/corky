@@ -3,6 +3,7 @@
  */
 
 var express = require('express');
+var methodOverride = require('method-override')
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
@@ -26,6 +27,7 @@ var app = express();
 app.use(morgan('tiny'));
 app.use(cors());
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 
 // Routes
 app.get('/api', function(req,res) {
@@ -76,7 +78,18 @@ app.post('/api/post', function(req,res) {
 });
 
 app.put('/api/post/:id', function(req,res) {
-   // Update the specified post.. or res w the error
+   Posts.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {new:true, useFindAndModify:false},
+      function(err,Posts){
+         if(err) {
+            res.json({message: err.message});
+            return;
+         }
+   
+         res.redirect('/');
+      });
 });
 
 app.delete('/api/post/:id', function(req,res) {
