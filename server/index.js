@@ -3,7 +3,7 @@
  */
 
 var express = require('express');
-var methodOverride = require('method-override')
+var methodOverride = require('method-override');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
