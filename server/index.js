@@ -43,7 +43,15 @@ app.get('/api/posts', function(req,res) {
 });
 
 app.get('/api/post/:id', function(req,res) {
-   // Get a single post (and the responses?)
+   var getId = req.params.id;
+
+   Posts.findOne({_id: getId}, function(err, Posts) {
+      if(err) {
+         res.json({message: err.message})
+      } else {
+         res.json(Posts);
+      }
+   });
 });
 
 app.post('/api/post', function(req,res) {
