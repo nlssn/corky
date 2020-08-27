@@ -33,7 +33,13 @@ app.get('/api', function(req,res) {
 });
 
 app.get('/api/posts', function(req,res) {
-   // Get all posts and res w posts as JSON
+   Posts.find(function(err,Posts) {
+      if(err) {
+         res.json({message: err.message})
+      } else {
+         res.json(Posts);
+      }
+   });
 });
 
 app.get('/api/post/:id', function(req,res) {
