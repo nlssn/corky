@@ -35,10 +35,11 @@ app.get('/api', function(req,res) {
 app.get('/api/posts', function(req,res) {
    Posts.find(function(err,Posts) {
       if(err) {
-         res.json({message: err.message})
-      } else {
-         res.json(Posts);
+         res.json({message: err.message});
+         return;
       }
+
+      res.json(Posts);
    });
 });
 
@@ -47,10 +48,11 @@ app.get('/api/post/:id', function(req,res) {
 
    Posts.findOne({_id: getId}, function(err, Posts) {
       if(err) {
-         res.json({message: err.message})
-      } else {
-         res.json(Posts);
+         res.json({message: err.message});
+         return;
       }
+
+      res.json(Posts);
    });
 });
 
@@ -66,10 +68,10 @@ app.post('/api/post', function(req,res) {
    post.save(function(err) {
       if(err) {
          res.json({message: err.message});
-         console.log(err.message);
-      } else {
-         res.redirect('/');
+         return;
       }
+
+      res.redirect('/');
    });
 });
 
