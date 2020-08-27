@@ -101,7 +101,7 @@ app.delete('/api/post/:id', function(req,res) {
          return;
       }
 
-      res.json({ message: "Deleted post with ID: " + deleteId });
+      res.json({ message: "Deleted post with ID: " + delId });
    });
 });
 
